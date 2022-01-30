@@ -1,12 +1,12 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
+    <Map />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import Map from "@/components/Map.vue"; // @ is an alias to /src
+import { defineAsyncComponent, defineComponent } from "vue";
+import Map from "@/components/Map.vue";
 
 export default defineComponent({
   name: "Home",
@@ -15,3 +15,17 @@ export default defineComponent({
   },
 });
 </script>
+
+<style>
+.home {
+  animation: fadein 14s;
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+</style>

@@ -1,0 +1,25 @@
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  animation: fadeout 3.5s forwards;
+}
+
+@media only screen and (max-width: 900px) {
+  .loader img {
+    width: 90%;
+  }
+}
+
+@keyframes fadeout {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
