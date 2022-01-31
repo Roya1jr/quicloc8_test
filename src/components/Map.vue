@@ -16,12 +16,16 @@
 import leaflet from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { onMounted } from "vue";
+import Cars from "@/assets/codingTest/vehicleCoordinates.json";
+import myimage from "@/assets/codingTest/ic_new_white_taxi.png";
+import "leaflet-rotatedmarker";
 
 export default {
   name: "Map",
   props: {},
   setup() {
     let map = null;
+
     onMounted(() => {
       map = leaflet.map("map").setView([-33.92, 18.42], 12);
       leaflet
@@ -39,6 +43,26 @@ export default {
           }
         )
         .addTo(map);
+
+      var CarIcon = leaflet.icon({
+        iconUrl: myimage,
+        iconSize: [45, 50], // size of the icon
+        shadowSize: [50, 64], // size of the shadow
+        iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+        shadowAnchor: [4, 62], // the same for the shadow
+        popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
+      });
+
+      Cars.forEach((element) => {
+        console.log(element);
+        leaflet
+          .marker([element.latitude, element.longitude], {
+            icon: CarIcon,
+            rotationAngle: element.heading,
+          })
+          .addTo(map)
+          .bindPopup("Taxi");
+      });
     });
   },
 };
