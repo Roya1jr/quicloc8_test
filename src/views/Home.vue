@@ -18,7 +18,7 @@ export default defineComponent({
 
 <style>
 .home {
-  animation: fadein 14s;
+  animation: fadein 1.5s;
 }
 @keyframes fadein {
   from {
