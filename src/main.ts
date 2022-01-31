@@ -6,7 +6,8 @@ import router from "./router";
 
 setTimeout(function () {
   createApp(App)
-    .use(router, VuesticPlugin, {
+    .use(router)
+    .use(VuesticPlugin, {
       colors: {
         // Default colors
         primary: "#23e066",

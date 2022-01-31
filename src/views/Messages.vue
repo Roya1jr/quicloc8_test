@@ -1,18 +1,30 @@
 <template>
-  <div id="container">
-    <va-navbar color="primary" class="mb-2">
-      <template #left>
-        <va-navbar-item>LOGO HERE</va-navbar-item>
-      </template>
-      <template #center>
-        <va-navbar-item>Primary</va-navbar-item>
-      </template>
-      <template #right>
-        <va-navbar-item>Auto font color</va-navbar-item>
-      </template>
-    </va-navbar>
+  <va-navbar color="myprimary" class="mb-2">
+    <template #left>
+      <router-link style="text-decoration: none" to="/">
+        <va-navbar-item> <va-icon name="arrow_back" /></va-navbar-item
+      ></router-link>
+    </template>
+    <template #center>
+      <va-navbar-item><h1>Messages</h1> </va-navbar-item>
+    </template>
+  </va-navbar>
+  <div class="align--center">
+    <va-accordion v-model="value" inset>
+      <va-collapse
+        v-for="(message, index) in messages"
+        :key="index"
+        :header="message.subject"
+      >
+        <div>
+          {{ message.message }}
+        </div>
+      </va-collapse>
+    </va-accordion>
   </div>
 </template>
+
+
 
 <script>
 import myMessages from "@/assets/codingTest/messages.json";
@@ -27,31 +39,10 @@ export default {
 };
 </script>
 
-<style>
-ul {
-  list-style-type: none;
-}
-.collapsible {
-  background-color: #777;
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}
-
-.active,
-.collapsible:hover {
-  background-color: #555;
-}
-
-.content {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-  background-color: #f1f1f1;
+<style scoped>
+.msg {
+  justify-content: center;
+  align-self: center;
+  text-align: center;
 }
 </style>
