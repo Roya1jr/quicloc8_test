@@ -9,18 +9,31 @@
       <va-navbar-item><h1>Messages</h1> </va-navbar-item>
     </template>
   </va-navbar>
-  <div class="align--center">
-    <va-accordion v-model="value" inset>
-      <va-collapse
-        v-for="(message, index) in messages"
-        :key="index"
-        :header="message.subject"
-      >
-        <div>
-          {{ message.message }}
-        </div>
-      </va-collapse>
-    </va-accordion>
+
+  <div>
+    <va-list>
+      <va-list-item v-for="(message, index) in messages" :key="index">
+        <va-list-item-section avatar>
+          <va-avatar>
+            <va-icon name="account_circle" />
+          </va-avatar>
+        </va-list-item-section>
+
+        <va-list-item-section>
+          <va-list-item-label>
+            {{ message.subject }}
+          </va-list-item-label>
+
+          <va-list-item-label caption>
+            {{ message.message }}
+          </va-list-item-label>
+        </va-list-item-section>
+
+        <va-list-item-section icon>
+          <va-icon class="mr-2">{{ message.display }}</va-icon>
+        </va-list-item-section>
+      </va-list-item>
+    </va-list>
   </div>
 </template>
 
